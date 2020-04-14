@@ -70,15 +70,15 @@ Furthermore, you may use `_locale` anywhere in the long urls you store, which is
 
 Both services are also accessible via cli commands:
 
-    php app/console fabstei:shorturl:add    # Add a long url, returns the short token
-    php app/console fabstei:shorturl:get    # Retrieve a long url associated with a token
-    php app/console fabstei:shorturl:update # Update the long url associated with a token
-    php app/console fabstei:shorturl:remove # Remove a redirection
-    php app/console fabstei:shorturl:list   # Get a list of all stored redirections
+    php bin/console fabstei:shorturl:add    # Add a long url, returns the short token
+    php bin/console fabstei:shorturl:get    # Retrieve a long url associated with a token
+    php bin/console fabstei:shorturl:update # Update the long url associated with a token
+    php bin/console fabstei:shorturl:remove # Remove a redirection
+    php bin/console fabstei:shorturl:list   # Get a list of all stored redirections
 
-    php app/console fabstei:token:codeset   # Get the codeset used to generate tokens
-    php app/console fabstei:token:encode    # Calculate a token from an integer
-    php app/console fabstei:token:decode    # Calculate the integer from a given token
+    php bin/console fabstei:token:codeset   # Get the codeset used to generate tokens
+    php bin/console fabstei:token:encode    # Calculate a token from an integer
+    php bin/console fabstei:token:decode    # Calculate the integer from a given token
 
 
 ## TODO
@@ -94,4 +94,3 @@ Both services are also accessible via cli commands:
 - [Jonathan Snook](http://snook.ca/archives/php/url-shortener) for the base class.
 - [Tim Nagel](https://github.com/merk) for help on IRC and code samples.
 - [FriendsOfSymfony](https://github.com/FriendsOfSymfony/) for the best code to learn from; [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle) for the object manager.
-

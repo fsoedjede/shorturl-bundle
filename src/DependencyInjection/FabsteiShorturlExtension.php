@@ -2,11 +2,11 @@
 
 namespace Fabstei\ShorturlBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder,
-    Symfony\Component\Config\FileLocator,
-    Symfony\Component\Config\Definition\Processor,
-    Symfony\Component\HttpKernel\DependencyInjection\Extension,
-    Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Definition\Processor;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Loader;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -21,14 +21,14 @@ class FabsteiShorturlExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
+        $config        = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
 
         $processor     = new Processor();
         $configuration = new Configuration();
-        $config = $processor->processConfiguration($configuration, $configs);
+        $config        = $processor->processConfiguration($configuration, $configs);
 
         $container->setParameter('fabstei_shorturl.url_controller', $config['url_controller']);
         $container->setParameter('fabstei_shorturl.redirect_class', $config['redirect_class']);
@@ -36,10 +36,5 @@ class FabsteiShorturlExtension extends Extension
         $container->setParameter('fabstei_shorturl.url_class', $config['url_class']);
         $container->setParameter('fabstei_shorturl.url_manager_class', $config['url_manager_class']);
         $container->setParameter('fabstei_shorturl.tokenizer_class', $config['tokenizer_class']);
-    }
-
-    public function getAlias()
-    {
-        return 'fabstei_shorturl';
     }
 }

@@ -44,22 +44,24 @@ class UrlManager extends BaseUrlManager
         
         return $url->getToken();
     }
-    
+
     /**
      * Removes a stored redirection
-     * 
+     *
+     * @param string $token
+     *
      * @return true on success or false if the Url could not be found
      */
-    public function removeUrl($token)
+    public function removeUrl(string $token): bool
     {
         $url = $this->findUrlByToken($token);
         
         if(isset($url)) {
             $this->deleteUrl($url);
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
     
     /**
@@ -92,9 +94,9 @@ class UrlManager extends BaseUrlManager
      * Updates an Url entity.
      *
      * @param UrlInterface  $url
-     * @param Boolean       $andFlush Whether to flush the changes (default true)
+     * @param bool          $andFlush Whether to flush the changes (default true)
      */
-    public function updateUrl(UrlInterface $url, $andFlush = true)
+    public function updateUrl(UrlInterface $url, bool $andFlush = true)
     {
         $this->objectManager->persist($url);
         

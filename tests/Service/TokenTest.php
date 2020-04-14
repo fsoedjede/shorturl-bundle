@@ -3,46 +3,46 @@
 namespace Fabstei\ShorturlBundle\Tests\Service;
 
 use Fabstei\ShorturlBundle\Service\Token;
+use PHPUnit\Framework\TestCase;
 
-class UrlControllerFunctionalTest extends \PHPUnit_Framework_TestCase
-
+final class UrlControllerFunctionalTest extends TestCase
 {
     private $codeset;
     private $tokenizer;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->codeset = 'abc';
         $this->tokenizer = new Token($this->codeset);
     }
 
-    public function testCodesetAttribute()
+    public function testCodesetAttribute(): void
     {
         $classname = get_class($this->tokenizer);
         $this->assertClassHasAttribute('codeset', $classname, 'There\'s no "codeset" attribute in "'.$classname.'".');
     }
 
-    public function testGetCodeset()
+    public function testGetCodeset(): void
     {
         $result = $this->tokenizer->getCodeset();
 
-        $this->assertInternalType('string', $result);
+        $this->assertIsString($result);
         $this->assertEquals($this->codeset, $result);
     }
 
-    public function testEncode()
+    public function testEncode(): void
     {
         $result = $this->tokenizer->encode(5);
 
-        $this->assertInternalType('string', $result);
+        $this->assertIsString($result);
         $this->assertEquals('bc', $result);
     }
 
-   public function testDecode()
+   public function testDecode(): void
     {
         $result = $this->tokenizer->decode('bc');
 
-        $this->assertInternalType('string', $result); //should be integer, but at the moment decode returns strings
+        $this->assertIsString($result); //should be integer, but at the moment decode returns strings
         $this->assertEquals('5', $result);
     }
 }

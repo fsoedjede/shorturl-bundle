@@ -2,13 +2,12 @@
 
 namespace Fabstei\ShorturlBundle\Tests\Controller;
 
-class UrlControllerTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
 
+final class UrlControllerTest extends TestCase
 {
-
-    public function testCompleteScenario()
+    public function testCompleteScenario(): void
     {
         $this->assertEquals(42, 42);
     }
-
 }

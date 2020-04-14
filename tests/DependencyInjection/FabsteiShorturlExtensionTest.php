@@ -2,21 +2,22 @@
 
 namespace Fabstei\ShorturlBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Fabstei\ShorturlBundle\DependencyInjection\FabsteiShorturlExtension;
 use Symfony\Component\Yaml\Parser;
 
-class FabsteiShorturlExtensionTest extends \PHPUnit_Framework_TestCase
+final class FabsteiShorturlExtensionTest extends TestCase
 {
     protected $configuration;
 
-    public function testCreateConfiguration()
+    public function testCreateConfiguration(): void
     {
         $this->configuration = new ContainerBuilder();
         $loader = new FabsteiShorturlExtension();
         $config = $this->getConfig();
-        $loader->load(array($config), $this->configuration);
-        $this->assertTrue($this->configuration instanceof ContainerBuilder);
+        $loader->load([$config], $this->configuration);
+        $this->assertInstanceOf(ContainerBuilder::class, $this->configuration);
     }
 
     /**
@@ -24,7 +25,7 @@ class FabsteiShorturlExtensionTest extends \PHPUnit_Framework_TestCase
      *
      * @return array
      */
-    protected function getConfig()
+    protected function getConfig(): array
     {
         $yaml = <<<EOF
 url_class: Acme\TestBundle\Entity\User
@@ -34,7 +35,7 @@ EOF;
         return $parser->parse($yaml);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unset($this->configuration);
     }

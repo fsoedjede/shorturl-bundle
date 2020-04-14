@@ -1,31 +1,31 @@
 fabstei_shorturl_url:
-    pattern:  /url-manager
-    defaults: { _controller: fabstei_shorturl.url:indexAction }
+    path:  /url-manager
+    defaults: { _controller: FabsteiShorturlBundle:Url:indexAction }
 
 fabstei_shorturl_url_new:
-    pattern:  /url-manager/new
-    defaults: { _controller: fabstei_shorturl.url:newAction }
+    path:  /url-manager/new
+    defaults: { _controller: FabsteiShorturlBundle:Url:newAction }
 
 fabstei_shorturl_url_show:
-    pattern:  /url-manager/show/{id}
-    defaults: { _controller: fabstei_shorturl.url:showAction }
+    path:  /url-manager/show/{id}
+    defaults: { _controller: FabsteiShorturlBundle:Url:showAction }
 
 fabstei_shorturl_url_create:
-    pattern:  /url-manager/create
-    defaults: { _controller: fabstei_shorturl.url:createAction }
+    path:  /url-manager/create
+    defaults: { _controller: FabsteiShorturlBundle:Url:createAction }
     requirements:
         _method:  POST
 
 fabstei_shorturl_url_update:
-    pattern:  /url-manager/update/{id}
-    defaults: { _controller: fabstei_shorturl.url:updateAction }
+    path:  /url-manager/update/{id}
+    defaults: { _controller: FabsteiShorturlBundle:Url:updateAction }
     requirements:
         _method:  POST
 
 fabstei_shorturl_url_delete:
-    pattern:  /url-manager/delete/{id}
-    defaults: { _controller: fabstei_shorturl.url:deleteAction }
+    path:  /url-manager/delete/{id}
+    defaults: { _controller: FabsteiShorturlBundle:Url:deleteAction }
 
 fabstei_shorturl_url_edit:
-    pattern:  /url-manager/edit/{id}
-    defaults: { _controller: fabstei_shorturl.url:editAction }
+    path:  /url-manager/edit/{id}
+    defaults: { _controller: FabsteiShorturlBundle:Url:editAction }

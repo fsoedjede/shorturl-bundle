@@ -9,41 +9,40 @@ use Fabstei\ShorturlBundle\Service\Token;
 class Tokenizer
 {
     /**
-     * @var Tokenizer $tokenizer
+     * @var Token
      */
     private $tokenizer;
 
     /**
      * Constructs a new instance of Tokenizer.
      *
-     * @param Tokenizer $tokenizer The tokenizer
+     * @param Token $token
      */
     public function __construct(Token $token)
     {
         $this->tokenizer = $token;
     }
 
-    public function postPersist(LifecycleEventArgs $args)
+    public function postPersist(LifecycleEventArgs $args): void
     {
-        self::addToken($args);
+        $this->addToken($args);
     }
 
-    public function postUpdate(LifecycleEventArgs $args)
+    public function postUpdate(LifecycleEventArgs $args): void
     {
-        self::addToken($args);
+        $this->addToken($args);
     }
 
-    public function addToken(LifecycleEventArgs $args)
+    public function addToken(LifecycleEventArgs $args): void
     {
         $entity = $args->getEntity();
-        $em = $args->getEntityManager();
 
         if ($entity instanceof Url) {
-
             if (!$entity->getToken()) {
-                 $entity->setToken($this->tokenizer->encode($entity->getId()));
+                $entity->setToken($this->tokenizer->encode($entity->getId()));
             }
 
+            $em = $args->getEntityManager();
             $em->persist($entity);
             $em->flush();
         }
