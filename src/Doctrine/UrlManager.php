@@ -2,7 +2,7 @@
 
 namespace Fabstei\ShorturlBundle\Doctrine;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Fabstei\ShorturlBundle\Model\UrlInterface;
 use Fabstei\ShorturlBundle\Model\UrlManager as BaseUrlManager;
 
